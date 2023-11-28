@@ -3,11 +3,11 @@ public class Name {
     private String middleName;
     private String surname;
 
-    public Name(String f, String m, String s)
+    public Name(String first, String middle, String sur)
     {
-        firstName = f;
-        middleName = m;
-        surname = s;
+        firstName = first;
+        middleName = middle;
+        surname = sur;
     }
 
     public String getFirstName() {
@@ -35,5 +35,17 @@ public class Name {
         else {
             return firstName + "" + surname;
         }
+    }
+
+    public String getInitials(){
+        String initials = "";
+
+        initials += firstName.charAt(0);
+        if (middleName != null) {
+            initials += middleName.charAt(0);
+        }
+        initials += surname.charAt(0);
+
+        return initials;
     }
 }

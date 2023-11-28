@@ -4,12 +4,12 @@ public class Person {
     private String country;
     private int age;
 
-    public Person(Name n, String e, String c, int a)
+    public Person(Name pName, String pEmail, String pCountry, int pAge)
     {
-        name = n;
-        email = e;
-        country = c;
-        age = a;
+        name = pName;
+        email = pEmail;
+        country = pCountry;
+        age = pAge;
     }
 
     public Name getName() {
