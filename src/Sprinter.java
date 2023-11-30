@@ -5,12 +5,13 @@ public class Sprinter extends Person{
     private int competitorNumber;
     private int level;
     private int[] scores;
-    public Sprinter(Name cName, String cEmail, String cCountry, int cAge , int cLevel, int[] cScores)
+    private int maxScores;
+    public Sprinter(Name cName, String cEmail, String cCountry, int cAge , int cLevel, int[] cScores, int maxScores)
     {
         super(cName, cEmail, cCountry, cAge);
         competitorNumber = competitorCounter += 1;
         level = cLevel;
-        scores = cScores;
+        scores = new cScores[maxScores];
     }
 
     public int getCompetitorNumber() {
