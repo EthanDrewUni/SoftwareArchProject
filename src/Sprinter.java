@@ -6,12 +6,13 @@ public class Sprinter extends Person{
     private int level;
     private int[] scores;
     private int maxScores;
-    public Sprinter(Name cName, String cEmail, String cCountry, int cAge , int cLevel, int[] cScores, int maxScores)
+    public Sprinter(Name cName, String cEmail, String cCountry, int cAge , int cLevel, int[] cScores, int cMaxScores)
     {
         super(cName, cEmail, cCountry, cAge);
         competitorNumber = competitorCounter += 1;
         level = cLevel;
-        scores = new cScores[maxScores];
+        maxScores = cMaxScores;
+        scores = Arrays.copyOf(cScores, maxScores);
     }
 
     public int getCompetitorNumber() {
