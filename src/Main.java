@@ -13,17 +13,20 @@ public class Main {
 
         // Create competitors
         Name sprinter1Name = new Name("Alice", "Smith", "Johnson");
-        int[] scores1 = {4, 3, 5, 2, 4};
-        Sprinter sprinter1 = new Sprinter(sprinter1Name, "test@email", "Sprint", 18, 1, scores1, 5);
+        Sprinter sprinter1 = new Sprinter(sprinter1Name, "test@email", "Sprint", 18, 1);
 
         Name sprinter2Name = new Name("Bob", "Thomas", "Williams");
-        int[] scores2 = {1, 5, 5, 2, 4};
-        Sprinter sprinter2 = new Sprinter(sprinter2Name, "tes2t@email", "Marathon", 20, 2, scores2, 5 );
+        Sprinter sprinter2 = new Sprinter(sprinter2Name, "tes2t@email", "Marathon", 20, 2);
 
         // Add competitors to the list
         sprinters.add(sprinter1);
         sprinters.add(sprinter2);
 
+        sprinter1.addScore(3);
+        sprinter1.addScore(1);
+        sprinter1.addScore(4);
+        sprinter1.addScore(2);
+        sprinter1.addScore(5);
         // Test the getAllDetails method for all competitors
         System.out.println("### Full Details for All Competitors ###");
         for (Sprinter sprinter : sprinters) {

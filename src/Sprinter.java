@@ -1,18 +1,19 @@
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Sprinter extends Person{
     private static int competitorCounter = 1;
     private int competitorNumber;
     private int level;
-    private int[] scores;
-    private int maxScores;
-    public Sprinter(Name cName, String cEmail, String cCountry, int cAge , int cLevel, int[] cScores, int cMaxScores)
+    private int maxScores = 5;
+    private int[] scores = new int[maxScores];
+    private int scoreIndex = 0;
+    public Sprinter(Name cName, String cEmail, String cCountry, int cAge , int cLevel)
     {
         super(cName, cEmail, cCountry, cAge);
         competitorNumber = competitorCounter += 1;
         level = cLevel;
-        maxScores = cMaxScores;
-        scores = Arrays.copyOf(cScores, maxScores);
     }
 
     public int getCompetitorNumber() {
@@ -31,7 +32,8 @@ public class Sprinter extends Person{
         //This function calculates the overall average minus the highest and lowest value of the array
         //This works by looping through the array adding the scores starting at position 1 and ending at the arrays length - 1
         //This total is then divided by the length of the array
-        if (scores.length < 5) {
+        if (scores.length < maxScores) {
+            System.out.println("The sprinter has not yet received 5 scores");
             return 0.0;
         }
 
@@ -60,6 +62,22 @@ public class Sprinter extends Person{
     }
     public int[] getScoreArray() {
         return scores;
+    }
+    public void addScore(int newScore) {
+        //Error handling
+        if (newScore > 5) {
+            System.out.println("Score cannot be over 5");
+        }
+        if (newScore < 0) {
+            System.out.println("Score cannot be under 0");
+        }
+        if (scoreIndex < maxScores) {
+            System.out.println("Cannot add more scores. Maximum scores reached.");
+        }
+
+        scores[scoreIndex] = newScore;
+        scoreIndex++; // Move to the next index so scores are not overwritten
+        System.out.println("Score added successfully");
     }
     public String getFullDetails(){
         return "Competitor number " + competitorNumber + ", Name " + getName().getFullName() + ", Country " + getCountry() +
