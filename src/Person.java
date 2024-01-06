@@ -1,13 +1,13 @@
 public class Person {
     private Name name;
-    private String email;
+    private String gender;
     private String country;
     private int age;
 
-    public Person(Name pName, String pEmail, String pCountry, int pAge)
+    public Person(Name pName, String pGender, String pCountry, int pAge)
     {
         name = pName;
-        email = pEmail;
+        gender = pGender;
         country = pCountry;
         age = pAge;
     }
@@ -18,11 +18,11 @@ public class Person {
     public void setName(Name name) {
         this.name = name;
     }
-    public String getEmail() {
-        return email;
+    public String getGender() {
+        return gender;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
     public String getCountry() {
         return country;

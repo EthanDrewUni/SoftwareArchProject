@@ -3,8 +3,8 @@ public class Manager extends Person {
     private int staffId;
     private int accessLevel;
 
-    public Manager(Name mName, String mEmail, String mCountry, int mAge, int mAccessLevel) {
-        super(mName, mEmail, mCountry, mAge);
+    public Manager(Name mName, String mGender, String mCountry, int mAge, int mAccessLevel) {
+        super(mName, mGender, mCountry, mAge);
         staffId = staffCounter++;
         accessLevel = mAccessLevel;
     }

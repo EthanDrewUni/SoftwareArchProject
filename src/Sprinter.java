@@ -3,15 +3,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sprinter extends Person{
-    private static int competitorCounter = 1;
+    private static int competitorCounter = 0;
     private int competitorNumber;
     private int level;
     private int maxScores = 5;
     private int[] scores = new int[maxScores];
     private int scoreIndex = 0;
-    public Sprinter(Name cName, String cEmail, String cCountry, int cAge , int cLevel)
+    public Sprinter(Name cName, String cGender, String cCountry, int cAge , int cLevel)
     {
-        super(cName, cEmail, cCountry, cAge);
+        super(cName, cGender, cCountry, cAge);
         competitorNumber = competitorCounter += 1;
         level = cLevel;
     }
@@ -32,11 +32,6 @@ public class Sprinter extends Person{
         //This function calculates the overall average minus the highest and lowest value of the array
         //This works by looping through the array adding the scores starting at position 1 and ending at the arrays length - 1
         //This total is then divided by the length of the array
-        if (scores.length < maxScores) {
-            System.out.println("The sprinter has not yet received 5 scores");
-            return 0.0;
-        }
-
         int[] sortedScores = Arrays.copyOf(scores, scores.length);
         Arrays.sort(sortedScores);
 
@@ -52,10 +47,6 @@ public class Sprinter extends Person{
         //This function calculates the overall average weighted by the competitors level
         //It first calculates the sum then divides it by the length of the array
         //It then times this by 1 + (0.1 x the level) which will increase the score by a higher amount depending on the level
-        if (scores.length < 5) {
-            return 0.0;
-        }
-
         double sum = Arrays.stream(scores).sum();
         double average = sum / scores.length;
         return average * (1 + 0.1 * level);
@@ -65,9 +56,6 @@ public class Sprinter extends Person{
     }
     public void addScore(int newScore) {
         //Error handling
-        if (newScore > 5) {
-            System.out.println("Score cannot be over 5");
-        }
         if (newScore < 0) {
             System.out.println("Score cannot be under 0");
         }
@@ -79,9 +67,11 @@ public class Sprinter extends Person{
         scoreIndex++; // Move to the next index so scores are not overwritten
         System.out.println("Score added successfully");
     }
-    public String getFullDetails(){
+    public String getFullDetails() {
         return "Competitor number " + competitorNumber + ", Name " + getName().getFullName() + ", Country " + getCountry() +
-                ", Email " + getEmail() + ", " + getName().getFirstName() + " is a " + level;
+                ", Gender " + getGender() + ", " + getName().getFirstName() + " is a level " + level +
+                " and received these scores: " + Arrays.toString(getScoreArray()) +
+                ". This gives them an overall score of " + getOverallScore();
     }
     public String getShortDetails(){
         return "CN " + competitorNumber + " (" + getName().getInitials() + ") has overall score " + getOverallScore();

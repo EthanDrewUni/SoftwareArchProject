@@ -1,12 +1,10 @@
 public class Name {
     private String firstName;
-    private String middleName;
     private String surname;
 
-    public Name(String first, String middle, String sur)
+    public Name(String first, String sur)
     {
         firstName = first;
-        middleName = middle;
         surname = sur;
     }
 
@@ -16,12 +14,6 @@ public class Name {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    public String getMiddleName() {
-        return firstName;
-    }
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
     public String getSurname() {
         return surname;
     }
@@ -29,23 +21,13 @@ public class Name {
         this.surname = surname;
     }
     public String getFullName() {
-        if (middleName != null) {
-            return firstName + "" + middleName + "" + surname;
-        }
-        else {
-            return firstName + "" + surname;
-        }
+        return firstName + " " + surname;
     }
 
     public String getInitials(){
         String initials = "";
-
         initials += firstName.charAt(0);
-        if (middleName != null) {
-            initials += middleName.charAt(0);
-        }
         initials += surname.charAt(0);
-
         return initials;
     }
 }
