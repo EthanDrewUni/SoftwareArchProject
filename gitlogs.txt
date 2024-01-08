@@ -1,0 +1,74 @@
+Comment for examiner. Sorry im unsure as to why it used my personal git account when pushing to my repo. The repo itself was
+created by my uni git account. Ive made the repo public so proof can be found here https://github.com/EthanDrewUni/SoftwareArchProject
+
+commit 1fcf2a12efdd7f43a84f50b2885195045cc4e30d
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Mon Jan 8 22:46:00 2024 +0000
+
+    Added edit functionallity to GUI
+
+commit 5fd946a737a10d512b2e69df653d416b4e53e2ad
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Mon Jan 8 20:27:52 2024 +0000
+
+    Added competitor list and search function to GUI
+
+commit c81d936b3287c59dbf4ee74acc52cc9588c229f6
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Mon Jan 8 13:48:09 2024 +0000
+
+    Restructured to MVC and create basic GUI
+
+commit 5cc7f2cbe5863a1e4b2e6bbe3c218ae8e30ef755
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Mon Jan 8 12:45:29 2024 +0000
+
+    Added function to create and output summary report to txt file
+
+commit d7acdef9c00cde3bd56cbcf59b78afa5108f9391
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Sat Jan 6 17:13:01 2024 +0000
+
+    Added function to read data from csv
+
+commit 2e87a795877be8e240682940f9af915fb4665e6d
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Fri Jan 5 16:38:27 2024 +0000
+
+    Added manager and competitorList classes, fixed adding scores to competitor
+
+commit 5a8476d91e72388ba3872c85c6877101bc1854cb
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Thu Jan 4 13:58:47 2024 +0000
+
+    Fixed errors with max array length
+
+commit ae86927ab4bb5e4f76ff86cbd0488dc175c8a7c4
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Thu Nov 30 14:04:32 2023 +0000
+
+    Added manager class and scores array
+
+commit c13ba456672a3a451b0c9d6fa8e3b90ecfc9e16d
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Tue Nov 28 18:04:18 2023 +0000
+
+    Added scoring and some functions to return averages. Added main file to test methods
+
+commit 29c1b5bb69cafad0421fe241c61e9ad1beca8f1c
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Mon Nov 27 14:34:51 2023 +0000
+
+    Added get and set methods to classes and getDetails to Competitor
+
+commit a3a2dc27576e77f792a61bb68a3497d6e5aec282
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Mon Nov 27 13:57:34 2023 +0000
+
+    Created Person, Comprtitor and Name classes
+
+commit 75a99e2abc56b1413f89bba2c61f81db69177200
+Author: ethandrew53 <ethandrew@btinternet.com>
+Date:   Mon Nov 27 13:38:51 2023 +0000
+
+    Initial commit
