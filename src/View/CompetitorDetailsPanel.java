@@ -1,28 +1,33 @@
 package View;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class CompetitorDetailsPanel extends JPanel {
     private JTextField competitorNumberField;
     private JButton searchButton;
+    private JButton editButton;
     private JButton backButton;
 
     public CompetitorDetailsPanel() {
-        // Initialize components, set layout, etc.
-        competitorNumberField = new JTextField(10);
+        competitorNumberField = new JTextField(5);
         searchButton = new JButton("Search");
+        editButton = new JButton("Edit");
         backButton = new JButton("Back");
 
         add(new JLabel("Enter Competitor Number:"));
         add(competitorNumberField);
         add(searchButton);
+        add(editButton);
         add(backButton);
     }
 
     public void searchButton(ActionListener actionListener) {
         searchButton.addActionListener(actionListener);
+    }
+
+    public void editButton(ActionListener actionListener) {
+        editButton.addActionListener(actionListener);
     }
 
     public void backButton(ActionListener actionListener) {
@@ -33,9 +38,9 @@ public class CompetitorDetailsPanel extends JPanel {
     public int getEnteredCompetitorNumber() {
         try {
             return Integer.parseInt(competitorNumberField.getText());
-        } catch (NumberFormatException e) {
-            // Handle the case where the input is not a valid integer
-            return -1; // You can choose an appropriate default value or handle it differently
+        }
+        catch (Exception e) {
+            return -1;
         }
     }
 }

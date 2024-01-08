@@ -8,33 +8,33 @@ import java.awt.*;
 public class CompetitorGUI extends JFrame {
     private CardLayout cardLayout;
     private CompetitorListPanel competitorListPanel;
-    private CompetitorDetailsPanel competitorDetailsGUI;
+    private CompetitorEditPanel competitorEditPanel;
+    private CompetitorDetailsPanel competitorDetailsPanel;
 
     public CompetitorGUI() {
+        //Create GUI
         super("Competitor Management System");
         cardLayout = new CardLayout();
         competitorListPanel = new CompetitorListPanel();
-        competitorDetailsGUI = new CompetitorDetailsPanel();
+        competitorEditPanel = new CompetitorEditPanel();
+        competitorDetailsPanel = new CompetitorDetailsPanel();
         setLayout(cardLayout);
 
-        // Initialize competitor controller
-        new CompetitorController(competitorListPanel, competitorDetailsGUI, cardLayout);
-
-        // Add panels to card layout with unique constraints
         add(competitorListPanel, "competitorList");
-        add(competitorDetailsGUI, "competitorDetails");
+        add(competitorEditPanel, "editCompetitor");
+        add(competitorDetailsPanel, "competitorDetails");
 
-        // Switch view according to constraints on button click
         competitorListPanel.viewDetailsButton(e -> cardLayout.show(getContentPane(), "competitorDetails"));
-        competitorDetailsGUI.backButton(e -> cardLayout.show(getContentPane(), "competitorList"));
+        competitorEditPanel.backButton(e -> cardLayout.show(getContentPane(), "competitorList"));
+        competitorDetailsPanel.backButton(e -> cardLayout.show(getContentPane(), "competitorList"));
 
-        // Frame width & height
+        // Initialize competitor controller
+        new CompetitorController(competitorListPanel, competitorDetailsPanel, competitorEditPanel, cardLayout);
+
+        //Set GUI details
         int FRAME_WIDTH = 1200;
         int FRAME_HEIGHT = 600;
-
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
         setVisible(true);
     }
 
