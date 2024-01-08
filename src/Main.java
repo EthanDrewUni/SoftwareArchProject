@@ -11,6 +11,7 @@ public class Main {
 
         CompetitorList competitorList = new CompetitorList();
         competitorList.readCompetitorsFromExternalFile("RunCompetitor.csv");
+        competitorList.generateFinalReport("finalReport.txt");
 
         // Test the outputAllCompetitors method for all competitors
         System.out.println("### Full Details for All Competitors ###");

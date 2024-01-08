@@ -19,61 +19,58 @@ public class CompetitorList {
         return sprinters;
     }
 
-    public void outputAllCompetitors() {
+    public String[] outputAllCompetitors() {
+        List<String> competitorsDetails = new ArrayList<>();
+
         for (Sprinter sprinter : sprinters) {
-            System.out.println(sprinter.getFullDetails());
+            competitorsDetails.add(sprinter.getFullDetails());
         }
+
+        return competitorsDetails.toArray(new String[0]);
     }
 
     // Function to provide full details of the competitor with the highest overall score
-    public void getWinner() {
-        Sprinter winner = sprinters.stream().max((s1, s2) -> Double.compare(s1.getOverallScore(), s2.getOverallScore()))
+    public String getWinner() {
+        Sprinter winner = sprinters.stream()
+                .max((s1, s2) -> Double.compare(s1.getOverallScore(), s2.getOverallScore()))
                 .orElse(null);
 
         if (winner != null) {
-            System.out.println("Winner:");
-            System.out.println(winner.getFullDetails());
-            System.out.println("Overall Score: " + winner.getOverallScore());
-        }
-        else {
-            System.out.println("No competitors found.");
+            return "Winner: " + winner.getFullDetails();
+        } else {
+            return "No competitors found.";
         }
     }
 
-    // Provide all total scores
-    public void getTotals() {
-        System.out.println("Total Scores:");
+    public String getTotals() {
+        String result = "Total Scores:\n";
         for (Sprinter sprinter : sprinters) {
-            System.out.println(sprinter.getCompetitorNumber() + ": " + sprinter.getOverallScore());
+            result += sprinter.getCompetitorNumber() + ": " + sprinter.getOverallScore() + "\n";
         }
+        return result;
     }
-
-    // Provide all weighted scores
-    public void getWeightedScores() {
-        System.out.println("Weighted Scores:");
+    public String getWeightedScores() {
+        String result = "Weighted Scores:\n";
         for (Sprinter sprinter : sprinters) {
-            System.out.println(sprinter.getCompetitorNumber() + ": " + sprinter.getScoreWeightedByLevel());
+            result += sprinter.getCompetitorNumber() + ": " + sprinter.getScoreWeightedByLevel() + "\n";
         }
+        return result;
     }
-
-    // Provide the highest individual score
-    public void getMaxScore() {
+    public String getMaxScore() {
         int maxScore = sprinters.stream()
                 .flatMapToInt(sprinter -> Arrays.stream(sprinter.getScoreArray()))
                 .max()
                 .orElse(0);
 
-        System.out.println("Max Score: " + maxScore);
+        return "Max Score: " + maxScore;
     }
-
-    // Provide the lowest individual score
-    public void getMinScore() {
+    public String getMinScore() {
         int minScore = sprinters.stream()
                 .flatMapToInt(sprinter -> Arrays.stream(sprinter.getScoreArray()))
                 .min()
                 .orElse(0);
 
-        System.out.println("Min Score: " + minScore);
+        return "Min Score: " + minScore;
     }
 
     // Find short details by competitor number
@@ -135,29 +132,32 @@ public class CompetitorList {
     }
 
     // Output report to a file
-    public void outputReport(String filePath) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            // Write the header
-            writer.write("Name,Age,Level,Gender,Country,Score1,Score2,Score3,Score4,Score5,OverallScore\n");
+    // Function to generate the final report
+    public void generateFinalReport(String fileName) {
+        try {
+            // Create FileWriter
+            FileWriter writer = new FileWriter(fileName);
 
-            // Write data for each competitor
-            for (Sprinter sprinter : sprinters) {
-                writer.write(sprinter.getName().getFullName() + "," +
-                        sprinter.getAge() + "," +
-                        sprinter.getLevel() + "," +
-                        sprinter.getGender() + "," +
-                        sprinter.getCountry() + "," +
-                        sprinter.getScoreArray()[0] + "," +
-                        sprinter.getScoreArray()[1] + "," +
-                        sprinter.getScoreArray()[2] + "," +
-                        sprinter.getScoreArray()[3] + "," +
-                        sprinter.getScoreArray()[4] + "," +
-                        sprinter.getOverallScore() + "\n");
+            // Table of competitors with full details
+            writer.write(" All Competitors \n");
+            String[] competitorsDetails = outputAllCompetitors();
+            for (String details : competitorsDetails) {
+                writer.write(details + "\n");
             }
 
-            System.out.println("Success");
-        } catch (Exception e) {
-            System.out.println("Something went wrong creating the report");
+            // Details of the competitor with the highest overall score
+            writer.write("\n Summary Statistics \n");
+            writer.write(getWinner() + "\n");
+            writer.write(getTotals() + "\n");
+            writer.write(getWeightedScores() + "\n");
+            writer.write(getMaxScore() + "\n");
+            writer.write(getMinScore() + "\n");
+
+
+            writer.close();
+        }
+        catch (Exception e) {
+            System.out.println("Something went wrong generating the final report");
             System.out.println(e.getMessage());
         }
     }
